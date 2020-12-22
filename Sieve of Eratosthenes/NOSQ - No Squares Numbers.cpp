@@ -5,13 +5,6 @@ using namespace std;
 ll x=100001;
 ll arr[100001][11];
  
-ll isdigitpresent(ll x,ll d){
-    while(x!=0){
-        if(x%10==d) return 1;
-        x=x/10;
-    }
-    return 0;
-}
 void sieve(){
     arr[0][0]=1;
     for(ll i=2;i*i<x;i++){
