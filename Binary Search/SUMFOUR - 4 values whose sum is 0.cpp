@@ -3,42 +3,37 @@ using namespace std;
  
 #define ll long long
  
-ll numberofwoodscut(ll arr[],ll mid,ll n){
-    ll sum=0,x=0;
-    for(ll i=0;i<n;i++){
-        sum=sum+max(x,arr[i]-mid);
-    }
-    return sum;
-}
- 
-ll binary_search(ll arr[],ll n,ll m){
-    ll l=0,r=1000000002,ans;
-    
-    while(l<=r){
-        ll mid=(l+r)/2;
-        if(numberofwoodscut(arr,mid,n)>m){
-            l=mid+1;
-            ans=mid;
-        }
-        else if(numberofwoodscut(arr,mid,n)==m){
-            return mid;
-        }
-        else{
-            r=mid-1;
-        }
-    }
-    return ans;
-}
 int main(){
-    ll n,m;
-    cin>>n>>m;
     
-    ll arr[n];
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
+    ll n;
+    cin >> n;
+    
+    ll a[n][4];
+    
+    for(ll i = 0; i < n; i++){
+        cin >> a[i][0] >> a[i][1] >> a[i][2] >> a[i][3];
     }
     
-    cout << binary_search(arr,n,m) << endl;
+    ll sum1[n*n], sum2[n*n];
+    ll temp = 0;
+    for(ll i = 0; i < n; i++){
+        for(ll j = 0; j < n; j++){
+            sum1[temp] = a[i][0] + a[j][1];
+            temp++;
+        }
+    }
+    temp = 0;
+    for(ll i = 0; i < n; i++){
+        for(ll j = 0; j < n; j++){
+            sum2[temp] = -1*(a[i][2] + a[j][3]);
+            temp++;
+        }
+    }
     
-    return 0;
+    sort(sum2,sum2 + n*n);
+    ll count = 0;
+    for(ll i = 0; i < n*n; i++){
+        count += upper_bound(sum2,sum2+n*n,sum1[i]) - lower_bound(sum2,sum2+n*n,sum1[i]);
+    }
+    cout << count << endl;
 } 
