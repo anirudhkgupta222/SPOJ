@@ -24,9 +24,6 @@ int main(){
                 count++;
                 last=v[i].second;
             }
-            if(v[i].second<last){
-                last=v[i].second;
-            }
         }
         cout << count << endl;
     }
