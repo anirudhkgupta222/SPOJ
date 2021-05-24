@@ -1,3 +1,5 @@
+//Ref1: https://www.youtube.com/watch?v=U1-CrvgffQg
+//Ref2: http://spoj-solutions.blogspot.com/2014/08/arrange-arranging-amplifiers.html
 #include<bits/stdc++.h>
 using namespace std;
 
